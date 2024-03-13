@@ -11,7 +11,7 @@ const LogoBottomUserHeader = () => {
     ? "/copy-dark-logo-nike.png"
     : "/white-logo-nike.png";
   const imageReuse = (
-    <Image src={imageSrc} alt="Logo Nike" width={160} height={120} />
+    <Image src={imageSrc} alt="Logo Nike" width={90} height={90} />
   );
   return isClient ? (
     isLight ? (

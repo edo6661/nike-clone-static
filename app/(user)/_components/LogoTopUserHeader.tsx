@@ -12,8 +12,8 @@ const LogoTopUserHeader = () => {
     <Image
       src={imageSrc}
       alt="Logo Nike"
-      width={120}
-      height={120}
+      width={102}
+      height={60}
       className=" h-14"
     />
   );

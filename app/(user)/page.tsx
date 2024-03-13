@@ -4,7 +4,7 @@ import React from "react";
 const UserHomepage = () => {
   return (
     <section>
-      <div className="container">
+      <div className="container py-4">
         <Heading>UserHomepage</Heading>
       </div>
     </section>

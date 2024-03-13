@@ -94,11 +94,16 @@
   .links-hover {
     @apply base-transition  opacity-100  hover:opacity-80;
   }
+  .input-hover {
+    @apply base-transition 
+    hover:bg-slate-500/40;
+  }
 }
 
 /* ! user header */
 
 @layer components {
+  /* ! top */
   .container-header-links {
     @apply fl-ic gap-8;
 
@@ -112,9 +117,27 @@
     }
   }
   .container-help-links {
-    @apply font-poppins flex flex-col gap-4;
+    @apply flex flex-col gap-4 font-poppins;
     & > a {
-      @apply links-hover hover:text-primaryDarkTextColor font-semibold text-hoveredTextColor dark:hover:text-primaryLightBg;
+      @apply links-hover font-semibold text-hoveredTextColor hover:text-primaryDarkTextColor dark:hover:text-primaryLightBg;
+    }
+  }
+  /* ! bottom */
+  .container-nav-links {
+    @apply fl-ic;
+  }
+  .test {
+    @apply bg-red-500;
+  }
+  .underline {
+    @apply absolute -bottom-1 left-0 right-0 h-1 bg-primaryDarkBg dark:bg-primaryLightBg;
+  }
+
+  /* ! bottom hovered */
+  .container-hovered-nav-links {
+    @apply absolute  left-0 right-0 z-10  bg-secondaryLightBg dark:bg-primaryDarkBg;
+    & > div {
+      @apply flex justify-evenly;
     }
   }
 }
