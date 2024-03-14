@@ -12,7 +12,7 @@ const BottomUserHeaderSearch = () => {
         variant="hoverIcon"
         type="submit"
         className=" 
-        absolute right-0 top-1/2 -translate-y-1/2  "
+        absolute right-0 top-1/2 -translate-y-1/2   "
       >
         <Search size={20} />
       </Button>

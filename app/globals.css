@@ -95,8 +95,19 @@
     @apply base-transition  opacity-100  hover:opacity-80;
   }
   .input-hover {
-    @apply base-transition 
-    hover:bg-slate-500/40;
+    @apply base-transition hover-primary-bg;
+  }
+  .primary-bg {
+    @apply bg-primaryLightBg  dark:bg-secondaryDarkBg;
+  }
+  .hover-primary-bg {
+    @apply hover:bg-primaryLightBg dark:hover:bg-secondaryDarkBg;
+  }
+  .secondary-bg {
+    @apply bg-secondaryLightBg  dark:bg-primaryDarkBg;
+  }
+  .hover-secondary-bg {
+    @apply hover:bg-secondaryLightBg dark:hover:bg-primaryDarkBg;
   }
 }
 
@@ -113,6 +124,9 @@
       & > a {
         @apply links-hover font-semibold
         hover:text-hoveredTextColor;
+      }
+      & > button {
+        @apply hover-secondary-bg primary-bg border-none;
       }
     }
   }
@@ -145,11 +159,31 @@
 /* ! user banner */
 @layer components {
   .wrapper-banner {
-    @apply overflow-x-hidden;
+    @apply relative overflow-x-hidden;
     & > div {
       @apply fl-ic cursor-grab active:cursor-grabbing;
       & > div {
         @apply aspect-video h-96 w-full shrink-0 bg-cover bg-center;
+      }
+    }
+  }
+}
+
+/* ! featured product */
+@layer components {
+  .container-featured-product {
+    @apply fl-col-ic gap-4;
+    & > img {
+      @apply h-[962px] w-full;
+    }
+    & > div {
+      @apply space-y-4 text-center;
+      & > h2 {
+        @apply text-6xl font-extrabold;
+      }
+      & > p,
+      button {
+        @apply text-lg font-semibold;
       }
     }
   }

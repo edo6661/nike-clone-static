@@ -6,7 +6,7 @@ const LayoutUser = ({ children }: ChildrenType) => {
   return (
     <>
       <UserHeader />
-      <main>{children}</main>
+      <main className="min-h-screen">{children}</main>
       <Footer />
     </>
   );

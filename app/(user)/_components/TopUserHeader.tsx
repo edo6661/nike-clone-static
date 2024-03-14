@@ -5,7 +5,7 @@ import LogoTopUserHeader from "./LogoTopUserHeader";
 
 const TopUserHeader = () => {
   return (
-    <div className=" bg-primaryLightBg  dark:bg-primaryDarkBg">
+    <div className=" primary-bg">
       <div className="fl-ic container justify-between gap-4">
         <LogoTopUserHeader />
         <LinksUserHeader />

@@ -12,9 +12,7 @@ const BottomUserHeader = () => {
           <MidBottomUserHeader />
           <BottomUserHeaderActions />
         </div>
-        <div>
-          <BottomUserHeaderHovered />
-        </div>
+        <BottomUserHeaderHovered />
       </div>
     </>
   );

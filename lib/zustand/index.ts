@@ -5,7 +5,7 @@ interface GlobalState {
   selectedLinksHeader: typeof headerBottomUserItems;
   trueSelectedLinksHeader: (item: string) => void;
   falseSelectedLinksHeader: (item: string) => void;
-  selectedLinkHeader: string;
+  selectedLinkHeader: string | null;
   setSelectedLinkHeader: (item: string) => void;
 }
 
@@ -23,8 +23,8 @@ export const useGlobalState = create<GlobalState>((set) => ({
       selectedLinksHeader: state.selectedLinksHeader.map((i) =>
         i.title === item ? { ...i, selected: false } : i,
       ),
-      selectedLinkHeader: "",
+      selectedLinkHeader: null,
     })),
-  selectedLinkHeader: "",
+  selectedLinkHeader: null,
   setSelectedLinkHeader: (item: string) => set({ selectedLinkHeader: item }),
 }));

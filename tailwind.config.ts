@@ -31,7 +31,7 @@ const config = {
         primaryDarkBg: "#111111",
         secondaryDarkBg: "#222831",
         primaryDarkTextColor: "#111",
-        secondaryTextColor: "#9E3500",
+        secondaryColor: "#9E3500",
         border: "hsl(var(--border))",
         input: "hsl(var(--input))",
         ring: "hsl(var(--ring))",

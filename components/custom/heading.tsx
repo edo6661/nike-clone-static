@@ -6,7 +6,7 @@ import { forwardRef } from "react";
 const headerVariants = cva("", {
   variants: {
     variant: {
-      default: "",
+      default: "font-montserrat ",
     },
     size: {
       default: "font-semibold text-2xl font-montserrat",

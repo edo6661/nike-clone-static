@@ -2,6 +2,7 @@
 import { Skeleton } from "@/components/ui/skeleton";
 import { useTheme } from "next-themes";
 import Image from "next/image";
+import Link from "next/link";
 import { useIsClient } from "usehooks-ts";
 const LogoTopUserHeader = () => {
   const isClient = useIsClient();
@@ -9,13 +10,18 @@ const LogoTopUserHeader = () => {
   const isLight = theme === "light";
   const imageSrc = isLight ? "/logo-cut.png" : "/dark-logo.png";
   const imageReuse = (
-    <Image
-      src={imageSrc}
-      alt="Logo Nike"
-      width={102}
-      height={60}
-      className=" h-14"
-    />
+    <Link
+      href="/"
+      className="hover-secondary-bg base-transition hover:rounded-xl"
+    >
+      <Image
+        src={imageSrc}
+        alt="Logo Nike"
+        width={102}
+        height={60}
+        className=" h-14"
+      />
+    </Link>
   );
   return isClient ? (
     isLight ? (

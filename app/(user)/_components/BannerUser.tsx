@@ -1,12 +1,9 @@
 "use client";
 import { imagesBanner } from "@/constants/banner";
 import { useEffect, useState } from "react";
-import Image from "next/image";
-import { Button } from "@/components/ui/button";
-import { ArrowLeft, ArrowRight } from "lucide-react";
 import { motion, useMotionValue } from "framer-motion";
-import { cn } from "@/lib/utils";
 import ImagesBannerUser from "./ImagesBannerUser";
+import { Button } from "@/components/ui/button";
 
 const DRAG_BUFFER = 50;
 const AUTO_INTERVAL = 5000;
@@ -61,8 +58,31 @@ const BannerUser = () => {
       >
         <ImagesBannerUser imgIndex={imgIndex} dragging={dragging} />
       </motion.div>
-      {/* <Dots setImgIndex={setImgIndex} imgIndex={imgIndex} /> */}
+      <Dots setImgIndex={setImgIndex} imgIndex={imgIndex} />
     </motion.div>
+  );
+};
+interface DotsProps {
+  setImgIndex: React.Dispatch<React.SetStateAction<number>>;
+  imgIndex: number;
+}
+export const Dots = ({ setImgIndex, imgIndex }: DotsProps) => {
+  return (
+    <div className="fl-ic absolute bottom-4 left-1/2 -translate-x-1/2 justify-center gap-4">
+      {imagesBanner.map((_, i) => {
+        const activeIndex = i === imgIndex;
+        return (
+          <Button
+            key={i}
+            onClick={() => setImgIndex(i)}
+            disabled={activeIndex}
+            variant="hoverIcon"
+            size="icon"
+            className="primary-bg z-10 h-6 w-6 "
+          />
+        );
+      })}
+    </div>
   );
 };
 

@@ -19,7 +19,7 @@ const BottomUserHeaderHovered = () => {
   return selectedLinksHeader.map((item) => (
     <motion.div
       key={item.title}
-      className="absolute  left-0 right-0 z-10  bg-secondaryLightBg dark:bg-primaryDarkBg"
+      className="primary-bg  absolute left-0 right-0  z-10 rounded-b-2xl"
       initial={{ height: 0 }}
       animate={{
         height: selectedLinkHeader === item.title ? 400 : 0,
@@ -28,34 +28,37 @@ const BottomUserHeaderHovered = () => {
       onMouseEnter={() => trueSelectedLinksHeader(item.title)}
       onMouseLeave={() => falseSelectedLinksHeader(item.title)}
     >
-      <AnimatePresence>
-        {item.title === selectedLinkHeader && (
-          <motion.div className="flex justify-evenly">
-            {item.items.map((item, i) => {
-              return (
-                <motion.div
-                  key={item.header}
-                  {...useHeaderVars}
-                  variants={headerItemsVariants}
-                >
-                  <Heading size="sm">{item.header}</Heading>
-                  <motion.div>
-                    {item.subItems.map((item, i) => (
-                      <motion.p
-                        key={item}
-                        {...useHeaderVars}
-                        variants={headerItemsVariants}
-                      >
-                        {item}
-                      </motion.p>
-                    ))}
+      <div className="container">
+        <AnimatePresence>
+          {item.title === selectedLinkHeader && (
+            <motion.div className="flex justify-between">
+              {item.items.map((item, i) => {
+                return (
+                  <motion.div
+                    key={item.header}
+                    {...useHeaderVars}
+                    variants={headerItemsVariants}
+                    className="pt-4"
+                  >
+                    <Heading size="sm">{item.header}</Heading>
+                    <motion.div>
+                      {item.subItems.map((item, i) => (
+                        <motion.p
+                          key={item}
+                          {...useHeaderVars}
+                          variants={headerItemsVariants}
+                        >
+                          {item}
+                        </motion.p>
+                      ))}
+                    </motion.div>
                   </motion.div>
-                </motion.div>
-              );
-            })}
-          </motion.div>
-        )}
-      </AnimatePresence>
+                );
+              })}
+            </motion.div>
+          )}
+        </AnimatePresence>
+      </div>
     </motion.div>
   ));
 };
