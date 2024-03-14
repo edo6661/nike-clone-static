@@ -141,3 +141,16 @@
     }
   }
 }
+
+/* ! user banner */
+@layer components {
+  .wrapper-banner {
+    @apply overflow-x-hidden;
+    & > div {
+      @apply fl-ic cursor-grab active:cursor-grabbing;
+      & > div {
+        @apply aspect-video h-96 w-full shrink-0 bg-cover bg-center;
+      }
+    }
+  }
+}
