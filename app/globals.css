@@ -172,9 +172,10 @@
 /* ! featured product */
 @layer components {
   .container-featured-product {
-    @apply fl-col-ic gap-4;
+    @apply fl-col-ic base-transition gap-4
+    pb-4;
     & > img {
-      @apply h-[962px] w-full;
+      @apply w-full object-cover;
     }
     & > div {
       @apply space-y-4 text-center;
@@ -186,5 +187,35 @@
         @apply text-lg font-semibold;
       }
     }
+  }
+}
+
+/* ! featured products */
+
+@layer components {
+  .container-featured-products {
+    @apply space-y-6  ps-8;
+    & > div {
+      @apply flex gap-4 overflow-x-auto pb-12;
+
+      & > a {
+        @apply hover-primary-bg base-transition space-y-8 pb-8 hover:rounded-b-xl;
+      }
+    }
+  }
+  /* TODO fix dirumah scroll nya gabisa di select */
+  .featured-products-scroll::-webkit-scrollbar-track {
+    /* @apply bg-red-500 rounded-full; */
+    @apply rounded-full bg-red-500;
+  }
+
+  .featured-products-scroll::-webkit-scrollbar-thumb {
+    /* @apply bg-lightBlue dark:bg-darkBlue rounded-full; */
+    @apply rounded-full bg-blue-500;
+  }
+
+  .featured-products-scroll::-webkit-scrollbar-thumb:hover {
+    /* @apply dark:bg-darkBlue bg-lightBlue rounded-full; */
+    @apply rounded-full bg-green-500;
   }
 }
