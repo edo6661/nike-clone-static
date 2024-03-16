@@ -30,7 +30,7 @@ export const SeparatorUserHeader = () => {
   return (
     <Separator
       orientation="vertical"
-      className="h-6 w-[2px]  bg-primaryDarkBg dark:bg-primaryLightBg"
+      className="dark-primary-bg h-6  w-[2px]"
     />
   );
 };

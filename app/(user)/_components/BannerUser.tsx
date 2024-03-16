@@ -4,9 +4,7 @@ import { useEffect, useState } from "react";
 import { motion, useMotionValue } from "framer-motion";
 import ImagesBannerUser from "./ImagesBannerUser";
 import { Button } from "@/components/ui/button";
-
-const DRAG_BUFFER = 50;
-const AUTO_INTERVAL = 5000;
+import { AUTO_INTERVAL, DRAG_BUFFER } from "@/constants";
 
 const BannerUser = () => {
   const [imgIndex, setImgIndex] = useState(0);
@@ -58,7 +56,7 @@ const BannerUser = () => {
       >
         <ImagesBannerUser imgIndex={imgIndex} dragging={dragging} />
       </motion.div>
-      <Dots setImgIndex={setImgIndex} imgIndex={imgIndex} />
+      {/* <Dots setImgIndex={setImgIndex} imgIndex={imgIndex} /> */}
     </motion.div>
   );
 };
@@ -68,7 +66,7 @@ interface DotsProps {
 }
 export const Dots = ({ setImgIndex, imgIndex }: DotsProps) => {
   return (
-    <div className="fl-ic absolute bottom-4 left-1/2 -translate-x-1/2 justify-center gap-4">
+    <div className="fl-ic absolute bottom-12 left-1/2 -translate-x-1/2 justify-center gap-4">
       {imagesBanner.map((_, i) => {
         const activeIndex = i === imgIndex;
         return (
@@ -78,7 +76,7 @@ export const Dots = ({ setImgIndex, imgIndex }: DotsProps) => {
             disabled={activeIndex}
             variant="hoverIcon"
             size="icon"
-            className="primary-bg z-10 h-6 w-6 "
+            className="primary-bg z-10 size-5 "
           />
         );
       })}

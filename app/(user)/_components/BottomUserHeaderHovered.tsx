@@ -31,7 +31,7 @@ const BottomUserHeaderHovered = () => {
       <div className="container">
         <AnimatePresence>
           {item.title === selectedLinkHeader && (
-            <motion.div className="flex justify-between">
+            <motion.div className="flex justify-evenly">
               {item.items.map((item, i) => {
                 return (
                   <motion.div

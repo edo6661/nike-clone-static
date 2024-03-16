@@ -23,15 +23,16 @@ const ReusableFeatureProduct = ({
       <div className="group ">
         <Link
           href={`/product/1`}
-          className="container-featured-product  hover-primary-bg  group-hover:rounded-3xl   "
+          className="container-featured-product    group-hover:rounded-3xl   "
         >
           <Image
             src={imageSrc}
             alt="Featured Product"
             width={1172}
             height={962}
-            className=" base-transition group-hover:rounded-b-3xl group-hover:opacity-90"
+            className=" base-transition group-hover:rounded-3xl group-hover:opacity-90"
           />
+
           <div>
             <Heading size="lg" as="h2">
               {heading}

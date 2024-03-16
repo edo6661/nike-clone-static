@@ -28,7 +28,6 @@ const ImagesBannerUser = ({ imgIndex, dragging }: ImagesBannerUserProps) => {
           duration: 0.5,
           ease: "easeInOut",
         }}
-        className="images-banner"
       />
     );
   });

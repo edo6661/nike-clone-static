@@ -26,7 +26,7 @@ const config = {
       colors: {
         primaryLightBg: "#f5f5f5",
         secondaryLightBg: "#fff",
-        hoveredBg: "#7e7e7e",
+        primarySlate: "#7e7e7e",
         hoveredTextColor: "#707072",
         primaryDarkBg: "#111111",
         secondaryDarkBg: "#222831",

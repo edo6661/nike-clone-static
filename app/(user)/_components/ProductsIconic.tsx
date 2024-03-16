@@ -5,9 +5,9 @@ import Link from "next/link";
 
 const ProductsIconic = () => {
   return (
-    <div className="container-featured-products">
+    <div className="container-iconic-products">
       <Heading>Icons of Air</Heading>
-      <div className="featured-products-scroll">
+      <div>
         {productIconicItems.map((product) => {
           return (
             <Link href={`/product/${product.title}`} key={product.title}>
@@ -17,11 +17,11 @@ const ProductsIconic = () => {
                   alt={product.title}
                   width={560}
                   height={560}
-                  className="min-w-[360px]"
+                  className="min-h-[481px] min-w-[368px]"
                 />
               </div>
               <div>
-                <Heading as="h5" size="sm" className=" pl-2">
+                <Heading as="h5" size="sm" className=" pl-2 ">
                   {product.title}
                 </Heading>
               </div>
