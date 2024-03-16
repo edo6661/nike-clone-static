@@ -1,5 +1,6 @@
 import React from "react";
 import { ThemeProvider } from "./ThemeProvider";
+import { Toaster } from "sonner";
 interface ProviderProps {
   children: React.ReactNode;
 }
@@ -12,6 +13,7 @@ const Providers = ({ children }: ProviderProps) => {
         enableSystem
         disableTransitionOnChange
       >
+        <Toaster />
         {children}
       </ThemeProvider>
     </>

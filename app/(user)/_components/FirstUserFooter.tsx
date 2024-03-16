@@ -33,7 +33,7 @@ const FirstUserFooter = () => {
       </motion.div>
       <Button
         size="icon"
-        variant="ghost"
+        variant="hoverIcon"
         className="mx-auto min-h-16 w-full rounded-none"
         onClick={toggleExpand}
       >

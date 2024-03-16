@@ -1,4 +1,6 @@
 "use client";
+import { Heading } from "@/components/custom/heading";
+import { cn } from "@/lib/utils";
 import { useGlobalState } from "@/lib/zustand";
 import { AnimatePresence, motion } from "framer-motion";
 import { useState } from "react";
@@ -22,7 +24,15 @@ const MidBottomUserHeader = () => {
                 onMouseEnter={() => trueSelectedLinksHeader(item.title)}
                 onMouseLeave={() => falseSelectedLinksHeader(item.title)}
               >
-                <p className=" text-lg font-bold">{item.title}</p>
+                <Heading
+                  as="h5"
+                  size="sm"
+                  className={cn("text-lg font-bold", {
+                    "links-hover": item.title === selectedLinkHeader,
+                  })}
+                >
+                  {item.title}
+                </Heading>
                 <AnimatePresence>
                   {item.title === selectedLinkHeader ? (
                     <motion.div className="underline" layoutId="underline" />

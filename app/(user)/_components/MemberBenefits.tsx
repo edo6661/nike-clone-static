@@ -17,7 +17,7 @@ const MemberBenefits = () => {
             <Link
               href={`/product/${product.title}`}
               key={product.title}
-              className="reset-p relative"
+              className="reset-p relative "
             >
               <div>
                 <Image
