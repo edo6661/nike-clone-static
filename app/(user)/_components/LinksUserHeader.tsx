@@ -2,8 +2,12 @@ import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 import HeaderHelpDropdown from "./HeaderHelpDropdown";
 import ToggleTheme from "@/components/ToggleTheme";
+import { useIsClient } from "usehooks-ts";
+import { UserButton } from "@clerk/nextjs";
+import { SignedIn } from "@clerk/clerk-react";
 
 const LinksUserHeader = async () => {
+  const isClient = useIsClient();
   return (
     <div className="container-header-links">
       <div>
@@ -16,12 +20,13 @@ const LinksUserHeader = async () => {
         <SeparatorUserHeader />
       </div>
 
+      {isClient && (
+        <SignedIn>
+          <UserButton />
+        </SignedIn>
+      )}
       <div>
         <Link href="/auth/login">Login</Link>
-        <SeparatorUserHeader />
-      </div>
-      <div>
-        <Link href="/auth/register">Register</Link>
         <SeparatorUserHeader />
       </div>
 
