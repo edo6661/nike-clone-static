@@ -8,7 +8,6 @@ import AlwaysIconicProducts from "./_components/AlwaysIconicProducts";
 import ShopBySports from "./_components/ShopBySports";
 import MemberBenefits from "./_components/MemberBenefits";
 import VerticalSeparator from "@/components/VerticalSeparator";
-import { getUserById } from "@/services/user";
 
 const UserHomepage = async () => {
   return (
