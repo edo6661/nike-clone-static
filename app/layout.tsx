@@ -3,7 +3,6 @@ import { Inter } from "next/font/google";
 import "./globals.css";
 import { montserrat, poppins, robotoMono } from "./fonts";
 import Providers from "@/providers/Providers";
-import { auth } from "@/auth";
 import { SessionProvider } from "next-auth/react";
 
 const inter = Inter({ subsets: ["latin"] });
@@ -14,19 +13,15 @@ export const metadata: Metadata = {
 };
 
 export default async function RootLayout({ children }: ChildrenType) {
-  const session = await auth();
-
   return (
-    <SessionProvider session={session}>
-      <html
-        suppressHydrationWarning
-        lang="en"
-        className={`${poppins.variable} ${montserrat.variable} ${robotoMono.variable}`}
-      >
-        <body className={inter.className}>
-          <Providers>{children}</Providers>
-        </body>
-      </html>
-    </SessionProvider>
+    <html
+      suppressHydrationWarning
+      lang="en"
+      className={`${poppins.variable} ${montserrat.variable} ${robotoMono.variable}`}
+    >
+      <body className={inter.className}>
+        <Providers>{children}</Providers>
+      </body>
+    </html>
   );
 }

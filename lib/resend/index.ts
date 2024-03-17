@@ -9,7 +9,7 @@ export const sendVerificationEmail = async (email: string, token: string) => {
     to: email,
     subject: "Please confirm your email",
     html: `
-      <h1>Verify your email</h1>
+    <h1>Verify your email</h1>
       <img src="https://i.pinimg.com/236x/51/5a/51/515a51b57be229972666fd50e1f97fdd.jpg"  
         style="width: 300px; height: 300px; border-radius: 50%; object-fit: cover; object-position: center;"  
       />
