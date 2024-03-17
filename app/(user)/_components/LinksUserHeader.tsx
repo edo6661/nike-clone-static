@@ -2,9 +2,9 @@ import { Separator } from "@/components/ui/separator";
 import Link from "next/link";
 import HeaderHelpDropdown from "./HeaderHelpDropdown";
 import ToggleTheme from "@/components/ToggleTheme";
-import { useIsClient } from "usehooks-ts";
-import { UserButton } from "@clerk/nextjs";
-import { SignedIn } from "@clerk/clerk-react";
+import { SignedIn, SignedOut, currentUser } from "@clerk/nextjs";
+import UserButton from "@/components/UserButton";
+import { db } from "@/lib/db";
 
 const LinksUserHeader = async () => {
   return (
@@ -19,10 +19,15 @@ const LinksUserHeader = async () => {
         <SeparatorUserHeader />
       </div>
 
-      <div>
-        <Link href="/auth/login">Login</Link>
-        <SeparatorUserHeader />
-      </div>
+      <SignedOut>
+        <div>
+          <Link href="/sign-in">Login</Link>
+          <SeparatorUserHeader />
+        </div>
+      </SignedOut>
+      <SignedIn>
+        <UserButton />
+      </SignedIn>
 
       <div>
         <ToggleTheme />
