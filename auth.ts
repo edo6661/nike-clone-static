@@ -32,11 +32,17 @@ export const {
   signOut,
   unstable_update,
 } = NextAuth({
-  ...authConfig,
-  adapter: PrismaAdapter(db),
-  // ! gabisa make strategy database karena pake prisma dan prisma ga support edge runtime
-  session: {
-    strategy: "jwt",
+  pages: {
+    signIn: "/auth/login",
+    error: "/auth/error",
+  },
+  events: {
+    async linkAccount({ user }) {
+      await db.user.update({
+        where: { id: user.id },
+        data: { emailVerified: new Date() },
+      });
+    },
   },
   callbacks: {
     async signIn({ user, account }) {
@@ -46,7 +52,18 @@ export const {
 
       if (!existingUser?.emailVerified) return false;
 
-      revalidateNextAuthSession(existingUser);
+      if (existingUser.isTwoFactorEnabled) {
+        const twoFactorConfirmation = await getTwoFactorByUserId(
+          existingUser.id,
+        );
+
+        if (!twoFactorConfirmation) return false;
+
+        // Delete two factor confirmation for next sign in
+        await db.twoFactorConfirmation.delete({
+          where: { id: twoFactorConfirmation.id },
+        });
+      }
 
       return true;
     },
@@ -65,7 +82,7 @@ export const {
 
       if (session.user) {
         session.user.name = token.name;
-        session.user.email = token.email!;
+        session.user.email! = token.email!;
         session.user.isOauth = token.isOauth;
       }
 
@@ -89,16 +106,7 @@ export const {
       return token;
     },
   },
-  events: {
-    async linkAccount({ user }) {
-      await db.user.update({
-        where: {
-          id: user.id,
-        },
-        data: {
-          emailVerified: new Date(),
-        },
-      });
-    },
-  },
+  adapter: PrismaAdapter(db),
+  session: { strategy: "jwt" },
+  ...authConfig,
 });

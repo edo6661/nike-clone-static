@@ -17,6 +17,7 @@ import { loginDefaultValues } from "@/helpers/initial/auth";
 import { login } from "@/actions/auth";
 const LoginForm = () => {
   const router = useRouter();
+  const { update } = useSession();
   const [response, setResponse] = useState({ error: "", success: "" });
   const [showTwoFactor, setShowTwoFactor] = useState(false);
   const [isPending, startTransition] = useTransition();
@@ -40,6 +41,7 @@ const LoginForm = () => {
           }
           if (res?.success) {
             router.push(DEFAULT_LOGIN_REDIRECT);
+            update();
             return setResponse({ error: "", success: res?.success });
           }
           if (res?.twoFactor) {

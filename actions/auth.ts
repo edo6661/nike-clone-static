@@ -126,7 +126,6 @@ export const login = async (data: LoginSchemaType) => {
       password,
       redirectTo: DEFAULT_LOGIN_REDIRECT,
     });
-    revalidateNextAuthSession(userExist);
   } catch (error) {
     if (error instanceof AuthError) {
       return error.type === "CredentialsSignin"

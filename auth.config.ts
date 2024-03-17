@@ -1,45 +1,38 @@
+import bcrypt from "bcryptjs";
 import type { NextAuthConfig } from "next-auth";
+import Credentials from "next-auth/providers/credentials";
 import Github from "next-auth/providers/github";
 import Google from "next-auth/providers/google";
-import Credentials from "next-auth/providers/credentials";
-
 import { loginSchema } from "./lib/zod/auth";
 import { getUserByEmail } from "./services/user";
-import bcrypt from "bcryptjs";
 
 export default {
   providers: [
-    Github({
-      clientId: process.env.GITHUB_ID,
-      clientSecret: process.env.GITHUB_SECRET,
-    }),
     Google({
       clientId: process.env.GOOGLE_ID,
       clientSecret: process.env.GOOGLE_SECRET,
+    }),
+    Github({
+      clientId: process.env.GITHUB_ID,
+      clientSecret: process.env.GITHUB_SECRET,
     }),
     Credentials({
       // @ts-ignore
       async authorize(credentials) {
         const validatedFields = loginSchema.safeParse(credentials);
-        if (!validatedFields.success) return null;
 
-        const { email, password } = validatedFields.data;
+        if (validatedFields.success) {
+          const { email, password } = validatedFields.data;
 
-        const user = await getUserByEmail(email);
-        if (!user || !user.password) return null;
+          const user = await getUserByEmail(email);
+          if (!user || !user.password) return null;
 
-        const passwordMatch = await bcrypt.compare(password, user.password);
+          const passwordsMatch = await bcrypt.compare(password, user.password);
 
-        if (!passwordMatch) return null;
+          if (passwordsMatch) return user;
+        }
 
-        return {
-          id: user.id,
-          email: user.email,
-          name: user.name,
-          emailVerified: user.emailVerified,
-          image: user.image,
-          role: user.role,
-        };
+        return null;
       },
     }),
   ],

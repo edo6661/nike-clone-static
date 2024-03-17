@@ -1,3 +1,4 @@
+"use client";
 import FormLogout from "./FormLogoutClient";
 import { useCurrentUser } from "@/hooks/lib/useCurrentUser";
 
