@@ -170,7 +170,7 @@
   }
   /* ! bottom */
   .container-nav-links {
-    @apply fl-ic;
+    @apply md:fl-ic hidden;
   }
   .test {
     @apply bg-red-500;
@@ -182,8 +182,13 @@
   /* ! bottom hovered */
   .container-hovered-nav-links {
     @apply absolute  left-0 right-0 z-10  bg-secondaryLightBg dark:bg-primaryDarkBg;
+  }
+  /* ! user mobile nav */
+  .container-mobile-nav {
+    @apply fixed right-0 top-0 z-10 min-h-screen w-80 bg-secondaryLightBg dark:bg-primaryDarkBg;
+
     & > div {
-      @apply flex justify-evenly;
+      @apply space-y-8 p-4;
     }
   }
 }
@@ -191,7 +196,8 @@
 /* ! user banner */
 @layer components {
   .wrapper-banner {
-    @apply container relative overflow-x-hidden;
+    @apply container relative z-0  overflow-x-hidden;
+
     & > div {
       @apply fl-ic cursor-grab active:cursor-grabbing;
       & > div {

@@ -7,7 +7,7 @@ const BottomUserHeader = () => {
   return (
     <>
       <div className=" relative  bg-secondaryLightBg dark:bg-primaryDarkBg">
-        <div className="fl-ic container justify-between gap-4">
+        <div className="fl-ic container relative justify-between gap-4 py-4 md:py-0">
           <LogoBottomUserHeader />
           <MidBottomUserHeader />
           <BottomUserHeaderActions />

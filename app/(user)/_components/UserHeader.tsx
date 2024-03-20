@@ -5,7 +5,7 @@ import BottomUserHeader from "./BottomUserHeader";
 import VerticalSeparator from "@/components/VerticalSeparator";
 const UserHeader = () => {
   return (
-    <header>
+    <header className="relative">
       <TopUserHeader />
       <VerticalSeparator />
       <BottomUserHeader />

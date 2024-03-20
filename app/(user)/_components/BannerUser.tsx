@@ -38,7 +38,7 @@ const BannerUser = () => {
   }, [dragX]);
 
   return (
-    <motion.div className="wrapper-banner">
+    <motion.div className="wrapper-banner ">
       <motion.div
         drag="x"
         dragConstraints={{

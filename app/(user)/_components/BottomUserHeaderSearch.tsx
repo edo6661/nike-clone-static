@@ -5,7 +5,7 @@ import React from "react";
 
 const BottomUserHeaderSearch = () => {
   return (
-    <form className="relative">
+    <form className="relative hidden md:block">
       <Input type="text" placeholder="Search..." className="input-hover" />
       <Button
         size="icon"

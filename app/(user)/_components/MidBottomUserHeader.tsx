@@ -3,7 +3,6 @@ import { Heading } from "@/components/custom/heading";
 import { cn } from "@/lib/utils";
 import { useGlobalState } from "@/lib/zustand";
 import { AnimatePresence, motion } from "framer-motion";
-import { useState } from "react";
 
 const MidBottomUserHeader = () => {
   const {
@@ -27,7 +26,7 @@ const MidBottomUserHeader = () => {
                 <Heading
                   as="h5"
                   size="sm"
-                  className={cn("text-lg font-bold", {
+                  className={cn("truncate text-lg font-bold", {
                     "links-hover": item.title === selectedLinkHeader,
                   })}
                 >

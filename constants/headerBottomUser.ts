@@ -17,6 +17,7 @@ export const headerBottomUserItems = [
       {
         header: "Featured",
         subItems: ["Best Sellers", "Trending Now", "Limited Edition"],
+        selected: false,
       },
     ],
     selected: false,
@@ -31,6 +32,7 @@ export const headerBottomUserItems = [
       {
         header: "Accessories",
         subItems: ["Hats", "Watches", "Sunglasses"],
+        selected: false,
       },
     ],
     selected: false,
@@ -49,18 +51,18 @@ export const headerBottomUserItems = [
     ],
     selected: false,
   },
-  {
-    title: "Kids",
-    items: [
-      {
-        header: "Clothing",
-        subItems: ["Boys", "Girls", "Baby"],
-      },
-      {
-        header: "Toys",
-        subItems: ["Educational", "Outdoor", "Board Games"],
-      },
-    ],
-    selected: false,
-  },
+  // {
+  //   title: "Kids",
+  //   items: [
+  //     {
+  //       header: "Clothing",
+  //       subItems: ["Boys", "Girls", "Baby"],
+  //     },
+  //     {
+  //       header: "Toys",
+  //       subItems: ["Educational", "Outdoor", "Board Games"],
+  //     },
+  //   ],
+  //   selected: false,
+  // },
 ];

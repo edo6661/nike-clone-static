@@ -5,7 +5,7 @@ const VerticalSeparator = () => {
   return (
     <Separator
       orientation="vertical"
-      className="bg-primarySlate h-[2px] w-full shadow-2xl shadow-muted dark:bg-primaryLightBg"
+      className="hidden h-[2px] w-full bg-primarySlate shadow-2xl shadow-muted dark:bg-primaryLightBg md:block"
     />
   );
 };

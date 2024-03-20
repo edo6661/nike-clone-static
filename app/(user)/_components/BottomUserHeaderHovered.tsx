@@ -1,5 +1,4 @@
 "use client";
-import { useGlobalState } from "@/lib/zustand";
 import React from "react";
 import { AnimatePresence, motion } from "framer-motion";
 import {
@@ -8,6 +7,7 @@ import {
   headerParentTransition,
 } from "@/lib/framer-motion/header";
 import { Heading } from "@/components/custom/heading";
+import { useGlobalState } from "@/lib/zustand";
 
 const BottomUserHeaderHovered = () => {
   const {
@@ -16,10 +16,11 @@ const BottomUserHeaderHovered = () => {
     falseSelectedLinksHeader,
     trueSelectedLinksHeader,
   } = useGlobalState();
+
   return selectedLinksHeader.map((item) => (
     <motion.div
       key={item.title}
-      className="primary-bg  absolute left-0 right-0  z-10 rounded-b-2xl"
+      className="primary-bg  absolute left-0 right-0  z-10 hidden rounded-b-2xl md:block"
       initial={{ height: 0 }}
       animate={{
         height: selectedLinkHeader === item.title ? 400 : 0,
