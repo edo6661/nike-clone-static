@@ -6,19 +6,28 @@ import { motion } from "framer-motion";
 import { Button } from "@/components/ui/button";
 import { MdOutlineExpandMore } from "react-icons/md";
 import { cn } from "@/lib/utils";
+import { useWindowSize } from "usehooks-ts";
+import useIsClient from "@/hooks/useIsClient";
 
 const FirstUserFooter = () => {
   const [expand, setExpand] = useState(false);
+  const { width } = useWindowSize();
+  const client = useIsClient();
 
   const toggleExpand = () => setExpand((prev) => !prev);
 
   const sliceItemBasedOnHover = (items: string[]) =>
     expand ? items : items.slice(0, 4);
+  const topFooterItemsBasedOnWidth = client
+    ? width < 600
+      ? topFooterItems.slice(0, 2)
+      : topFooterItems
+    : [];
 
   return (
     <>
-      <motion.div layout className="container-first-footer">
-        {topFooterItems.map((item) => (
+      <motion.div layout className="container-first-footer ">
+        {topFooterItemsBasedOnWidth.map((item) => (
           <motion.div layout key={item.title}>
             <Heading as="h6" size="sm">
               {item.title}

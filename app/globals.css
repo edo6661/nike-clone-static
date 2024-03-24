@@ -244,12 +244,10 @@
     }
     & > div {
       @apply space-y-4 text-center;
-      & > h2 {
-        @apply text-6xl font-extrabold;
-      }
+
       & > p,
       button {
-        @apply text-lg font-semibold;
+        @apply text-sm font-medium sm:text-lg sm:font-semibold;
       }
     }
   }
@@ -265,9 +263,9 @@
       @apply scroll flex gap-4 overflow-x-auto pb-12;
 
       & > a {
-        @apply links-hover hover-primary-bg min-w-[412px] space-y-8 pb-4 hover:rounded-3xl;
+        @apply links-hover hover-primary-bg min-w-[452px] space-y-8 pb-4 hover:rounded-3xl;
         & > div > img {
-          @apply base-transition w-full;
+          @apply base-transition w-full md:h-auto;
         }
         & > div > p {
           @apply base-description;
@@ -278,15 +276,16 @@
 }
 
 /* ! featured products */
+/* TODO jadiin overflow-x-auto */
 @layer components {
   .container-featured-products {
-    @apply base-container;
+    @apply base-container scroll overflow-x-auto pb-12;
 
     & > div {
-      @apply flex items-center gap-4;
+      @apply fl-ic gap-4;
 
       & > a {
-        @apply hover-link-primary relative flex h-[525px]  w-full flex-col space-y-4 bg-cover bg-center;
+        @apply hover-link-primary relative flex h-[452px] min-w-[452px]  flex-col space-y-4  bg-cover bg-center md:h-[525px] md:min-w-[390px];
 
         & > div {
           @apply absolute bottom-12 left-6 space-y-8;
@@ -301,7 +300,7 @@
 /* ! first footer */
 @layer components {
   .container-first-footer {
-    @apply container flex justify-between py-8;
+    @apply container flex justify-between gap-4 py-8;
 
     & > div {
       @apply space-y-3;
@@ -310,7 +309,7 @@
         @apply space-y-1;
 
         & > li {
-          @apply base-description;
+          @apply base-description truncate;
         }
       }
     }
@@ -324,12 +323,12 @@
       @apply base-container;
 
       & > div {
-        @apply fl-ic justify-between;
+        @apply md:fl-ic justify-between space-y-8 md:space-y-0;
       }
     }
   }
   .container-footer-links {
-    @apply fl-ic gap-4 font-semibold;
+    @apply fl-ic flex-wrap gap-4 font-semibold;
 
     & > a {
       @apply hover-link-primary;

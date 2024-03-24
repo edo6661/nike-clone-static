@@ -26,6 +26,7 @@ model User {
 
   createdAt DateTime @default(now())
   updatedAt DateTime @updatedAt
+  adminContent Content[]
 
 }
 
@@ -33,3 +34,54 @@ enum Role {
   USER
   ADMIN
 }
+
+model Content {
+  id        String  @id @default(uuid())
+  title     String
+  images    String[]
+  link      String
+  isActive  Boolean @default(false)
+  createdAt DateTime @default(now())
+
+  createdBy  String
+  user      User    @relation(fields: [createdBy], references: [id])
+  bannerContent Banner?
+  featuredContent Featured?
+  relevantContent Relevant?
+  iconicContent Iconic?
+  sportsContent Sport?
+}
+
+model Banner {
+  id        String  @id @default(uuid())
+  content   Content @relation(fields: [contentId], references: [id])
+  contentId String @unique
+  
+}
+
+model Featured {
+  id        String  @id @default(uuid())
+  content   Content @relation(fields: [contentId], references: [id])
+  contentId String @unique
+}
+
+model Relevant {
+  id        String  @id @default(uuid())
+  content   Content @relation(fields: [contentId], references: [id])
+  contentId String @unique
+}
+
+model Iconic {
+  id        String  @id @default(uuid())
+  content   Content @relation(fields: [contentId], references: [id])
+  contentId String @unique
+}
+
+model Sport {
+  id        String  @id @default(uuid())
+  content   Content @relation(fields: [contentId], references: [id])
+  contentId String @unique
+}
+
+
+

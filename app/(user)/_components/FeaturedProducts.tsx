@@ -15,6 +15,7 @@ const FeaturedProducts = () => {
             }}
             key={product.title}
             href={`/product/${product.title}`}
+            className=""
           >
             <div>
               <Heading as="h5" size="sm" className="font-medium text-white">

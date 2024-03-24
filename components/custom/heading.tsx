@@ -9,10 +9,10 @@ const headerVariants = cva("", {
       default: "font-montserrat ",
     },
     size: {
-      default: "font-semibold text-2xl font-montserrat",
-      sm: "font-medium text-xl",
-      lg: "font-bold text-4xl",
-      md: "font-semibold text-3xl",
+      default: "font-semibold sm:text-2xl text-xl font-montserrat",
+      sm: "font-medium sm:text-xl text-lg",
+      lg: "font-bold sm:text-4xl text-2xl",
+      md: "font-semibold sm:text-3xl text-xl",
     },
   },
   defaultVariants: {

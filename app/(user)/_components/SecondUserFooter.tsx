@@ -12,7 +12,7 @@ const SecondUserFooter = () => {
       <div>
         <MidUserFooter />
         <div>
-          <div className="fl-ic gap-2">
+          <div className="fl-ic flex-wrap gap-2">
             <a href="" className="hover-link-primary font-semibold">
               My Github
             </a>

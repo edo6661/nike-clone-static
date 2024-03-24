@@ -21,13 +21,33 @@ const MobileUserHeaderSubLinks = () => {
 
   const checker = selectedLinkHeader && !selectedSubLinkHeader;
 
+  const firstSwipe = selectedLinkHeader && !selectedSubLinkHeader;
+
+  const vars = {
+    initial: {
+      x: firstSwipe ? "100%" : "-100%",
+      opacity: 0,
+    },
+    animate: {
+      x: 0,
+      opacity: 1,
+    },
+    exit: {
+      x: "-100%",
+      opacity: 0,
+    },
+    transition: {
+      ease: "easeInOut",
+    },
+  };
+
   return (
     <AnimatePresence>
       {checker &&
         selectedLinksHeader.map((link, i) => (
           <div key={link.title} className="absolute inset-0  ">
             {selectedLinkHeader === link.title && (
-              <motion.div {...doubleMobileHeaderVars}>
+              <motion.div {...vars}>
                 <Heading as="h4" className="pb-4">
                   {selectedLinkHeader}!
                 </Heading>
