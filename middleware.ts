@@ -7,6 +7,7 @@ export default authMiddleware({
     "/api/webhooks/clerk(.*)",
     "/add-banner",
     "/add-featured",
+    "/page",
   ],
 });
 

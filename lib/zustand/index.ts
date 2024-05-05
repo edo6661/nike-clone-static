@@ -1,7 +1,7 @@
 import { headerBottomUserItems } from "@/constants/headerBottomUser";
 import { create } from "zustand";
 
-interface GlobalState {
+interface NavState {
   selectedLinksHeader: typeof headerBottomUserItems;
   //  ! header
   trueSelectedLinksHeader: (item: string) => void;
@@ -17,7 +17,7 @@ interface GlobalState {
   falseAllSelectedSubLinkHeader: () => void;
 }
 
-export const useGlobalState = create<GlobalState>((set) => ({
+export const useNavState = create<NavState>((set) => ({
   selectedLinksHeader: headerBottomUserItems,
   //  ! header
   trueSelectedLinksHeader: (item: string) =>

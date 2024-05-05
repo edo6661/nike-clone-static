@@ -1,34 +1,47 @@
-import React from "react";
+import React, { Suspense } from "react";
 import BannerUser from "./_components/BannerUser";
 import TrendingProduct from "./_components/TrendingProduct";
-import ReusableFeatureProduct from "./_components/ReusableFeatureProduct";
+import ReusableFeatureProduct, {
+  SkeletonReusableFeatureProduct,
+} from "./_components/ReusableFeatureProduct";
 import ProductsIconic from "./_components/ProductsIconic";
 import FeaturedProducts from "./_components/FeaturedProducts";
 import AlwaysIconicProducts from "./_components/AlwaysIconicProducts";
 import ShopBySports from "./_components/ShopBySports";
 import MemberBenefits from "./_components/MemberBenefits";
 import VerticalSeparator from "@/components/VerticalSeparator";
+import { getBanner } from "@/services/banner";
+import { getNew } from "@/services/new";
+import { getAds } from "@/services/ads";
+import { getRelevant } from "@/services/relevant";
+import { getSport } from "@/services/sport";
+import { getIconic } from "@/services/iconic";
+import { Heading } from "@/components/custom/heading";
+import NewProduct from "./_components/NewProduct";
+import Link from "next/link";
+import PageLink from "@/components/PageLink";
 
 const UserHomepage = async () => {
+  const banner = await getBanner();
+  const relevant = await getRelevant();
+  const sport = await getSport();
+  const iconic = await getIconic();
+
+
   return (
-    <section className=" space-y-12 py-4">
-      <BannerUser />
+    <section className=" space-y-12 pb-4 pt-16 md:pt-4 ">
+      {/* <Link href="/peg">
+        Peg
+      </Link> */}
+      <BannerUser {...banner!} />
       {/* TODO replace by dynamic data */}
-      <ReusableFeatureProduct
-        heading="AJ1 HIGH OG BLACK & WHITE"
-        description="Suit up and show up in this iconic colorway. Inspired by MJ's all bussiness attitude, you're ready to make moves"
-        button="Shop"
-        imageSrc="/trending-below-hero.jpg"
-      />
-      {/* <ReusableFeatureProduct
-        heading="NIKE AIR MAX DN"
-        description="The next generation of Air technology launches on March 26th,
-        Preview the full lineup of colourways now"
-        button="Get Notified"
-        imageSrc="/hero-image.png"
-      /> */}
-      {/* TODO replace by dynamic data */}
-      <FeaturedProducts />
+      <Suspense fallback={<SkeletonReusableFeatureProduct />}>
+        <NewProduct />
+      </Suspense>
+
+      <Suspense fallback={<Heading>Loading...</Heading>}>
+        <FeaturedProducts />
+      </Suspense>
 
       {/* TODO replace by dynamic data */}
       <ReusableFeatureProduct

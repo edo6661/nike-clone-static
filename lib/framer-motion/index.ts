@@ -9,7 +9,6 @@ export const existVars = {
 };
 
 export const basicMotionProps = {
-  variant: existVars,
   initial: "initial",
   animate: "animate",
   exit: "exit",

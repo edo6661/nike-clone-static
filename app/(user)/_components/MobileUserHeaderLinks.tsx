@@ -1,6 +1,6 @@
 "use client";
 import { reverseMobileHeaderVars } from "@/lib/framer-motion/mobileHeader";
-import { useGlobalState } from "@/lib/zustand";
+import { useNavState } from "@/lib/zustand";
 import { AnimatePresence, motion } from "framer-motion";
 import { ChevronRight } from "lucide-react";
 import React from "react";
@@ -12,7 +12,7 @@ const MobileUserHeaderLinks = () => {
     trueSelectedLinksHeader,
     selectedLinkHeader,
     selectedSubLinkHeader,
-  } = useGlobalState((state) => state);
+  } = useNavState((state) => state);
 
   return (
     <AnimatePresence>

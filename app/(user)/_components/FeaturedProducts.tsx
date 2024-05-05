@@ -1,25 +1,27 @@
 import { Heading } from "@/components/custom/heading";
 import { Button } from "@/components/ui/button";
-import { productFeaturedItems } from "@/constants/userHomepage";
+import { getFeatured } from "@/services/featured";
 import Link from "next/link";
 
-const FeaturedProducts = () => {
+const FeaturedProducts = async () => {
+  const featuredProducts = await getFeatured();
+
   return (
     <div className="container-featured-products">
       <Heading>Featured</Heading>
       <div>
-        {productFeaturedItems.map((product) => (
+        {featuredProducts?.content.images.map((image) => (
           <Link
             style={{
-              backgroundImage: `url(${product.imgSrc})`,
+              backgroundImage: `url(${image})`,
             }}
-            key={product.title}
-            href={`/product/${product.title}`}
+            key={image}
+            href={`/product/${featuredProducts.content.link}`}
             className=""
           >
             <div>
               <Heading as="h5" size="sm" className="font-medium text-white">
-                {product.title}
+                {featuredProducts.content.title}
               </Heading>
               <Button variant="secondary" size="lg">
                 Shop

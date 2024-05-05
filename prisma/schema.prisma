@@ -40,6 +40,7 @@ model Content {
   title     String
   images    String[]
   link      String
+  description String?
   isActive  Boolean @default(false)
   createdAt DateTime @default(now())
 
@@ -50,13 +51,33 @@ model Content {
   relevantContent Relevant?
   iconicContent Iconic?
   sportsContent Sport?
+  logoContent Logo?
+  newContent New?
+  adsContent Ads?
+}
+
+model Logo {
+  id        String  @id @default(uuid())
+  content   Content @relation(fields: [contentId], references: [id])
+  contentId String @unique
 }
 
 model Banner {
   id        String  @id @default(uuid())
   content   Content @relation(fields: [contentId], references: [id])
+  contentId String @unique 
+}
+
+model New {  
+  id        String  @id @default(uuid())
+  content   Content @relation(fields: [contentId], references: [id])
   contentId String @unique
-  
+}
+
+model Ads {  
+  id        String  @id @default(uuid())
+  content   Content @relation(fields: [contentId], references: [id])
+  contentId String @unique
 }
 
 model Featured {

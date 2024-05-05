@@ -243,7 +243,7 @@
       @apply w-full object-cover;
     }
     & > div {
-      @apply space-y-4 text-center;
+      @apply space-y-4 px-4 text-center;
 
       & > p,
       button {
@@ -285,7 +285,7 @@
       @apply fl-ic gap-4;
 
       & > a {
-        @apply hover-link-primary relative flex h-[452px] min-w-[452px]  flex-col space-y-4  bg-cover bg-center md:h-[525px] md:min-w-[390px];
+        @apply hover-link-primary relative flex h-[452px] min-w-[442px]  flex-col space-y-4  bg-cover bg-center md:h-[525px];
 
         & > div {
           @apply absolute bottom-12 left-6 space-y-8;

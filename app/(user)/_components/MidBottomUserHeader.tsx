@@ -1,7 +1,7 @@
 "use client";
 import { Heading } from "@/components/custom/heading";
 import { cn } from "@/lib/utils";
-import { useGlobalState } from "@/lib/zustand";
+import { useNavState } from "@/lib/zustand";
 import { AnimatePresence, motion } from "framer-motion";
 
 const MidBottomUserHeader = () => {
@@ -10,7 +10,7 @@ const MidBottomUserHeader = () => {
     trueSelectedLinksHeader,
     falseSelectedLinksHeader,
     selectedLinkHeader,
-  } = useGlobalState((state) => state);
+  } = useNavState((state) => state);
   return (
     <div className=" container-nav-links">
       <div className=" p-2 ">

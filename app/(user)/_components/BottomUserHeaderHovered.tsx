@@ -7,7 +7,8 @@ import {
   headerParentTransition,
 } from "@/lib/framer-motion/header";
 import { Heading } from "@/components/custom/heading";
-import { useGlobalState } from "@/lib/zustand";
+import { useNavState } from "@/lib/zustand";
+import Link from "next/link";
 
 const BottomUserHeaderHovered = () => {
   const {
@@ -15,7 +16,7 @@ const BottomUserHeaderHovered = () => {
     selectedLinkHeader,
     falseSelectedLinksHeader,
     trueSelectedLinksHeader,
-  } = useGlobalState();
+  } = useNavState();
 
   return selectedLinksHeader.map((item) => (
     <motion.div
@@ -23,7 +24,7 @@ const BottomUserHeaderHovered = () => {
       className="primary-bg  absolute left-0 right-0  z-10 hidden rounded-b-2xl md:block"
       initial={{ height: 0 }}
       animate={{
-        height: selectedLinkHeader === item.title ? 400 : 0,
+        height: selectedLinkHeader === item.title ? 620 : 0,
         transition: headerParentTransition,
       }}
       onMouseEnter={() => trueSelectedLinksHeader(item.title)}
@@ -41,18 +42,23 @@ const BottomUserHeaderHovered = () => {
                     variants={headerItemsVariants}
                     className="pt-4"
                   >
-                    <Heading size="sm">{item.header}</Heading>
-                    <motion.div>
+                    <Link
+                      href={`/category/${item.header}`}
+                      className="hover-link-primary"
+                    >
+                      <Heading size="sm">{item.header}</Heading>
+                    </Link>
+                    <div className="flex flex-col">
                       {item.subItems.map((item, i) => (
-                        <motion.p
+                        <Link
+                          className="hover-link-primary"
+                          href={`/category/sub/${item}`}
                           key={item}
-                          {...useHeaderVars}
-                          variants={headerItemsVariants}
                         >
                           {item}
-                        </motion.p>
+                        </Link>
                       ))}
-                    </motion.div>
+                    </div>
                   </motion.div>
                 );
               })}

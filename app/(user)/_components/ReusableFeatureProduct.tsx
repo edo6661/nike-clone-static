@@ -1,5 +1,7 @@
 import { Heading } from "@/components/custom/heading";
 import { Button } from "@/components/ui/button";
+import { Skeleton } from "@/components/ui/skeleton";
+import { getAds } from "@/services/ads";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -11,12 +13,14 @@ interface FeaturedProductType {
   imageSrc: string;
 }
 
-const ReusableFeatureProduct = ({
+const ReusableFeatureProduct = async ({
   heading,
   description,
   button,
   imageSrc,
 }: FeaturedProductType) => {
+  const ads = await getAds();
+
   // TODO replace by dynamic data
   return (
     <div className="container ">
@@ -31,6 +35,7 @@ const ReusableFeatureProduct = ({
             width={1172}
             height={962}
             className=" base-transition group-hover:rounded-3xl group-hover:opacity-90"
+            priority
           />
 
           <div>
@@ -48,6 +53,14 @@ const ReusableFeatureProduct = ({
           </div>
         </Link>
       </div>
+    </div>
+  );
+};
+
+export const SkeletonReusableFeatureProduct = () => {
+  return (
+    <div className="container ">
+      <Skeleton className="h-[406px] w-full space-y-12 rounded-3xl sm:h-[541px] md:h-[570px] lg:h-[611px] "></Skeleton>
     </div>
   );
 };

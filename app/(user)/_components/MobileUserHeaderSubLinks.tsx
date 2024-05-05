@@ -3,7 +3,7 @@ import { AnimatePresence } from "framer-motion";
 
 import { motion } from "framer-motion";
 import { Heading } from "@/components/custom/heading";
-import { useGlobalState } from "@/lib/zustand";
+import { useNavState } from "@/lib/zustand";
 import {
   doubleMobileHeaderVars,
   mobileHeaderVars,
@@ -17,7 +17,7 @@ const MobileUserHeaderSubLinks = () => {
     selectedLinkHeader,
     trueSelectedLinksSubHeader,
     selectedSubLinkHeader,
-  } = useGlobalState((state) => state);
+  } = useNavState((state) => state);
 
   const checker = selectedLinkHeader && !selectedSubLinkHeader;
 

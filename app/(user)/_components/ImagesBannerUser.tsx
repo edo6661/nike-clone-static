@@ -1,14 +1,20 @@
 import { imagesBanner } from "@/constants/banner";
+import { Content } from "@prisma/client";
 
 import { motion } from "framer-motion";
 
 interface ImagesBannerUserProps {
   imgIndex: number;
   dragging: boolean;
+  content: Content;
 }
 
-const ImagesBannerUser = ({ imgIndex, dragging }: ImagesBannerUserProps) => {
-  return imagesBanner.map((image, i) => {
+const ImagesBannerUser = ({
+  imgIndex,
+  dragging,
+  content,
+}: ImagesBannerUserProps) => {
+  return content.images.map((image, i) => {
     const isCurrentIndex = imgIndex === i;
     const scale = isCurrentIndex ? 1 : 0.8;
     const blur = isCurrentIndex && dragging ? 12 : 0;
@@ -16,9 +22,9 @@ const ImagesBannerUser = ({ imgIndex, dragging }: ImagesBannerUserProps) => {
 
     return (
       <motion.div
-        key={image.image}
+        key={image}
         style={{
-          backgroundImage: `url(${image.image})`,
+          backgroundImage: `url(${image})`,
         }}
         animate={{
           scale: scale,
@@ -26,7 +32,6 @@ const ImagesBannerUser = ({ imgIndex, dragging }: ImagesBannerUserProps) => {
         }}
         transition={{
           duration: 0.5,
-          ease: "easeInOut",
         }}
       />
     );

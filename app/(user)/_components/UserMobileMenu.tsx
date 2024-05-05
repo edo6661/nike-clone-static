@@ -6,7 +6,7 @@ import React, { useEffect, useState } from "react";
 
 import { Button } from "@/components/ui/button";
 import ToggleTheme from "@/components/ToggleTheme";
-import { useGlobalState } from "@/lib/zustand";
+import { useNavState } from "@/lib/zustand";
 import BottomUserHeaderHovered from "./BottomUserHeaderHovered";
 import {
   mobileHeaderVars,
@@ -35,7 +35,7 @@ const UserMobileMenu = ({
     setSelectedLinkHeader,
     selectedLinkHeader,
     selectedLinksHeader,
-  } = useGlobalState((state) => state);
+  } = useNavState((state) => state);
 
   const { width } = useWindowSize();
 
@@ -50,7 +50,8 @@ const UserMobileMenu = ({
 
   return (
     <>
-      <div
+      <motion.div
+        layout
         className={cn("hidden", {
           "fixed inset-0 z-10 block bg-black opacity-50": isNav,
         })}

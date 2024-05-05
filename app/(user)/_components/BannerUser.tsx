@@ -1,12 +1,14 @@
 "use client";
-import { imagesBanner } from "@/constants/banner";
 import { useEffect, useState } from "react";
 import { motion, useMotionValue } from "framer-motion";
 import ImagesBannerUser from "./ImagesBannerUser";
 import { Button } from "@/components/ui/button";
 import { AUTO_INTERVAL, DRAG_BUFFER } from "@/constants";
-
-const BannerUser = () => {
+import { Banner, Content } from "@prisma/client";
+interface BannerUserProps extends Banner {
+  content: Content;
+}
+const BannerUser = ({ content }: BannerUserProps) => {
   const [imgIndex, setImgIndex] = useState(0);
   const [dragging, setDragging] = useState(false);
   const dragX = useMotionValue(0);
@@ -17,7 +19,7 @@ const BannerUser = () => {
 
     // ! kalo di drag ke kiri atau kanan lebih dari 50px, maka image nya bakal berpindah
     if (x <= -DRAG_BUFFER) {
-      if (imgIndex === imagesBanner.length - 1) return;
+      if (imgIndex === content.images.length - 1) return;
       setImgIndex((prev) => prev + 1);
     } else if (x >= DRAG_BUFFER) {
       if (imgIndex === 0) return;
@@ -31,10 +33,11 @@ const BannerUser = () => {
 
       if (x === 0)
         setImgIndex((prev) =>
-          prev === imagesBanner.length - 1 ? 0 : prev + 1,
+          prev === content.images.length - 1 ? 0 : prev + 1,
         );
     }, AUTO_INTERVAL);
     return () => clearInterval(intervalRef);
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [dragX]);
 
   return (
@@ -54,20 +57,25 @@ const BannerUser = () => {
         onDragStart={onDragStart}
         onDragEnd={onDragEnd}
       >
-        <ImagesBannerUser imgIndex={imgIndex} dragging={dragging} />
+        <ImagesBannerUser
+          content={content}
+          imgIndex={imgIndex}
+          dragging={dragging}
+        />
       </motion.div>
-      {/* <Dots setImgIndex={setImgIndex} imgIndex={imgIndex} /> */}
+      {/* <Dots setImgIndex={setImgIndex} content={content} imgIndex={imgIndex} /> */}
     </motion.div>
   );
 };
 interface DotsProps {
+  content: Content;
   setImgIndex: React.Dispatch<React.SetStateAction<number>>;
   imgIndex: number;
 }
-export const Dots = ({ setImgIndex, imgIndex }: DotsProps) => {
+export const Dots = ({ setImgIndex, imgIndex, content }: DotsProps) => {
   return (
     <div className="fl-ic absolute bottom-12 left-1/2 -translate-x-1/2 justify-center gap-4">
-      {imagesBanner.map((_, i) => {
+      {content.images.map((_, i) => {
         const activeIndex = i === imgIndex;
         return (
           <Button
