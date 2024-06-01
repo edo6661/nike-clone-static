@@ -43,7 +43,6 @@ const UserHomepage = async () => {
         <FeaturedProducts />
       </Suspense>
 
-      {/* TODO replace by dynamic data */}
       <ReusableFeatureProduct
         heading="LBJ X LFC"
         description="From L.A to Liverpool, two icons collide"
