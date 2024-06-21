@@ -1,19 +1,16 @@
-import { getNew } from "@/services/new";
 import React from "react";
 import ReusableFeatureProduct from "./ReusableFeatureProduct";
 
 const NewProduct = async () => {
-  const newProduct = await getNew();
 
-  return newProduct?.content.images.map((image) => (
+  return (
     <ReusableFeatureProduct
-      key={image}
-      heading={newProduct.content.title}
+      heading={"AJI HIGH OG BLACK & WHITE"}
       description="Suit up and show up in this iconic colorway. Inspired by MJ's all bussiness attitude, you're ready to make moves"
       button="Shop"
-      imageSrc={image}
+      imageSrc={"/trending-below-hero.jpg"}
     />
-  ));
+  )
 };
 
 export default NewProduct;

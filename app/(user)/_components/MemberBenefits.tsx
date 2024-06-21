@@ -1,7 +1,6 @@
 import { Heading } from "@/components/custom/heading";
 import { Button } from "@/components/ui/button";
 import {
-  productIconicItems,
   productMemberBenefitsItems,
 } from "@/constants/userHomepage";
 import Image from "next/image";

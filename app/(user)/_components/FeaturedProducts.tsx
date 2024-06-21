@@ -1,27 +1,26 @@
 import { Heading } from "@/components/custom/heading";
 import { Button } from "@/components/ui/button";
-import { getFeatured } from "@/services/featured";
+import { featuredProducts } from "@/constants/featuredProducts";
 import Link from "next/link";
 
 const FeaturedProducts = async () => {
-  const featuredProducts = await getFeatured();
 
   return (
     <div className="container-featured-products">
       <Heading>Featured</Heading>
       <div>
-        {featuredProducts?.content.images.map((image) => (
+        {featuredProducts.map((image, i) => (
           <Link
             style={{
               backgroundImage: `url(${image})`,
             }}
             key={image}
-            href={`/product/${featuredProducts.content.link}`}
+            href={`#`}
             className=""
           >
             <div>
               <Heading as="h5" size="sm" className="font-medium text-white">
-                {featuredProducts.content.title}
+                {`Featured Product ${i + 1}`}
               </Heading>
               <Button variant="secondary" size="lg">
                 Shop
@@ -30,6 +29,7 @@ const FeaturedProducts = async () => {
           </Link>
         ))}
       </div>
+
     </div>
   );
 };

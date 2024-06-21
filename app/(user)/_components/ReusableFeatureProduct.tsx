@@ -1,7 +1,6 @@
 import { Heading } from "@/components/custom/heading";
 import { Button } from "@/components/ui/button";
 import { Skeleton } from "@/components/ui/skeleton";
-import { getAds } from "@/services/ads";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
@@ -19,7 +18,6 @@ const ReusableFeatureProduct = async ({
   button,
   imageSrc,
 }: FeaturedProductType) => {
-  const ads = await getAds();
 
   // TODO replace by dynamic data
   return (
