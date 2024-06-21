@@ -1,4 +1,3 @@
-import { db } from "@/lib/db";
 import { WebhookEvent } from "@clerk/nextjs/server";
 import { headers } from "next/headers";
 import { Webhook } from "svix";
@@ -53,38 +52,6 @@ export async function POST(req: Request) {
   // Get the ID and type
   // const { id } = evt.data;
   const eventType = evt.type;
-
-  if (eventType === "user.created") {
-    await db.user.create({
-      data: {
-        externalUserId: payload.data.id,
-        username: payload.data.username,
-        profilePhoto: payload.data.image_url,
-        coverPhoto:
-          "https://i.pinimg.com/564x/72/f6/ae/72f6ae0fe0ade2b9343b8eafe857474e.jpg",
-        bio: `${payload.data.username} default bio by mugi-chan`,
-      },
-    });
-  }
-  if (eventType === "user.updated") {
-    await db.user.update({
-      where: {
-        // ! karena di create kita nge store nya itu payload.data.id
-        externalUserId: payload.data.id,
-      },
-      data: {
-        username: payload.data.username,
-        profilePhoto: payload.data.image_url,
-      },
-    });
-  }
-  if (eventType === "user.deleted") {
-    await db.user.delete({
-      where: {
-        externalUserId: payload.data.id,
-      },
-    });
-  }
 
   // ! untuk testing purpose di clerk
   // console.log(`Webhook with and ID of ${id} and type of ${eventType}`);

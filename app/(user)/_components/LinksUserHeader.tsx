@@ -4,7 +4,6 @@ import HeaderHelpDropdown from "./HeaderHelpDropdown";
 import ToggleTheme from "@/components/ToggleTheme";
 import { SignedIn, SignedOut, currentUser } from "@clerk/nextjs";
 import UserButton from "@/components/UserButton";
-import { db } from "@/lib/db";
 
 const LinksUserHeader = async () => {
   return (
